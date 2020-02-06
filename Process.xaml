@@ -1,0 +1,507 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessTransaction" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_FileNameARSReport" Type="InArgument(x:String)" />
+    <x:Property Name="in_ARSTotalReports" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_48004CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_61910CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_48470CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_48456CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60132CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60102CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60103CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60104CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60340CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60341CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_60339CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_61304CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_61318CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_61305CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_46465CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_48423CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_61311CDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60103" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT61305" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT61304" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60339" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT48456" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT48470" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT61910" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT48004" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60132" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60102" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60104" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60341" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT61311" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT61318" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT46465" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT48423" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_ARSOutputDT60340" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>945,2031</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="ProcessTransaction" sap:VirtualizedContainerService.HintSize="905,1951" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="Status" />
+      <Variable x:TypeArguments="sd:DataTable" Name="TempDT60340" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="883,289" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="336,211" sap2010:WorkflowViewState.IdRef="Sequence_33">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke IsRecordProcessed workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Files\IsRecordProcessed.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Status">[Status]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <Sequence sap:VirtualizedContainerService.HintSize="883,1163" sap2010:WorkflowViewState.IdRef="Sequence_19">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[(in_TransactionItem.Item(2).ToString.Trim&lt;&gt;&quot;&quot; And in_TransactionItem.Item(3).ToString.Trim&lt;&gt;&quot;&quot; And in_TransactionItem.Item(10).ToString.Trim&lt;&gt;&quot;&quot; AND in_TransactionItem.Item(16).ToString.Trim&lt;&gt;&quot;&quot;)]" DisplayName="If- Check the Mandatory Column from Exception Report" sap:VirtualizedContainerService.HintSize="861,1039" sap2010:WorkflowViewState.IdRef="If_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="636,891" sap2010:WorkflowViewState.IdRef="Sequence_32">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="614,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Taking Transaction Item &amp; Start Processing&quot;]" />
+            <Flowchart DisplayName="Flowchart- SKU Comparison based on positive or negative" sap:VirtualizedContainerService.HintSize="614,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">320,2.5</av:Point>
+                  <av:Size x:Key="ShapeSize">60,75</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">350,77.5 350,154.5</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Flowchart.StartNode>
+                <x:Reference>__ReferenceID0</x:Reference>
+              </Flowchart.StartNode>
+              <FlowStep x:Name="__ReferenceID0">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">250,154.5</av:Point>
+                    <av:Size x:Key="ShapeSize">200,51</av:Size>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Sequence- Compare SKU" sap:VirtualizedContainerService.HintSize="536,6436" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="514,6312" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ARSTotalReports]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="in_FileNameARSReport" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="498,6178" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Comparison of Exception Report &amp; ARS input Files for the Store Number based on the Report Name" DisplayName="Switch- Compare Exception Report &amp; ARS Input Report Based on the Name" Expression="[in_FileNameARSReport]" sap:VirtualizedContainerService.HintSize="476,6054" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                            <Switch.Default>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;No Report Available for the Store Number&quot;]" />
+                            </Switch.Default>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Sequence x:Key="48004C" DisplayName="Sequence-48004C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Compare 48004C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport48004 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport48004.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_48004CDataTable">[in_48004CDataTable]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT48004">[io_ARSOutputDT48004]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="61910C" DisplayName="Sequence-61910C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Compare 61910C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport61910 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport61910.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_61910CDataTable">[in_61910CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT61910">[io_ARSOutputDT61910]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="48470C" DisplayName="Sequence-48470C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Compare 48470C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport48470 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport48470.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_48470CDataTable">[in_48470CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT48470">[io_ARSOutputDT48470]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="48456C" DisplayName="Sequence-48456C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Compare 48456C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport48456C workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport48456C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_48456CDT">[in_48456CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt48456C">[io_ARSOutputDT48456]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60102C" DisplayName="Sequence-60102C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Compare 60102C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60102 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60102.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60102CDatatTable">[in_60102CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60102">[io_ARSOutputDT60102]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60103C" DisplayName="Sequence-60103C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Compare 60103C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60103 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60103.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60103CDataTable">[in_60103CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60103">[io_ARSOutputDT60103]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60104C" DisplayName="Sequence-60104C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Compare 60104C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60104 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60104.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60104CDataTable">[in_60104CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60104">[io_ARSOutputDT60104]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60340C" DisplayName="Sequence- 60340C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Compare 60340C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60340 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60340.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60340CDataTable">[in_60340CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60340">[io_ARSOutputDT60340]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60341C" DisplayName="Sequence-60341C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Compare 60341C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60341 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60341.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60341CDataTable">[in_60341CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60341">[io_ARSOutputDT60341]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60339C" DisplayName="Sequence-60339C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Compare 60339C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60339C workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60339C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60339CDT">[in_60339CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt60339C">[io_ARSOutputDT60339]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="61304C" DisplayName="Sequence-61304C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Compare 61304C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport61304C workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport61304C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_61304CDT">[in_61304CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt61304C">[io_ARSOutputDT61304]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="61318C" DisplayName="Sequence- 61318C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Compare 61318C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport61318 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport61318.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_61318CDataTable">[in_61318CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT61318">[io_ARSOutputDT61318]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="61305C" DisplayName="Sequence-61305C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Compare 61305C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport61305C workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport61305C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_61305CDT">[in_61305CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt61305C">[io_ARSOutputDT61305]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="61311C" DisplayName="Sequence-61311C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Compare 61311C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport61311 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport61311.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_61311CDataTable">[in_61311CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT61311">[io_ARSOutputDT61311]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="60132C" DisplayName="Sequence-60132C" sap:VirtualizedContainerService.HintSize="336,342" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Compare 60132C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport60132 workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport60132.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_60132CDataTable">[in_60132CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDT60132">[io_ARSOutputDT60132]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="46465C" DisplayName="Sequence-46465C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Compare 46465C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ComparisonARSReport46465C workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport46465C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_46465CDT">[in_46465CDataTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt46465C">[io_ARSOutputDT46465]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                            <Sequence x:Key="48423C" DisplayName="Sequence-48423C" sap:VirtualizedContainerService.HintSize="343,342" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage sap:VirtualizedContainerService.HintSize="321,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Compare 48423C ARS Input File with Exception Report&quot;]" />
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke 48423C_Workflow workflow" sap:VirtualizedContainerService.HintSize="321,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ARS_Reports\ComparisonARSReport48423C.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_48423CDT">[in_48423CDataTable]</InArgument>
+                                  <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_OutputDt48423C">[io_ARSOutputDT48423]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                          </Switch>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </Sequence>
+              </FlowStep>
+            </Flowchart>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Throw Exception="[New BusinessRuleException(&quot;Required Input field is missing&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="883,253" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="222,175" sap2010:WorkflowViewState.IdRef="Sequence_37">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[String.IsNullOrEmpty(in_TransactionItem(&quot;Status&quot;).ToString)]" DisplayName="If- Status is True, Start Processing Transacation Item" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Else>
+              <Throw Exception="[New BusinessRuleException(&quot;Record already processed&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            </If.Else>
+          </If>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>

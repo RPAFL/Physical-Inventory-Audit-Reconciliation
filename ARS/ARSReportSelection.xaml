@@ -1,0 +1,576 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ARSReportSelection" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FileNameARSReport" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_folderPathARS" Type="InArgument(x:String)" />
+    <x:Property Name="io_48004CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_61910CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_48470CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_48456CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60132CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60102CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60103CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60104CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60340CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60341CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_60339CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_61304CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_61318CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_61305CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_46465CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_48423CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_61311CDataTable" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_MatchedSKUExceptionDT" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_ExceptionTransationDT" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>556,11890</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Sequence- Selection of ARS Report based on File Name" sap:VirtualizedContainerService.HintSize="516,11810" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="494,11686" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Comparison of Exception Report &amp; ARS input Files for the Store Number based on the Report Name" DisplayName="Switch- Compare Exception Report &amp; ARS Input Report Based on the Name" Expression="[in_FileNameARSReport]" sap:VirtualizedContainerService.HintSize="476,11216" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <Switch.Default>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;No Report Available for the Store Number&quot;]" />
+          </Switch.Default>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence x:Key="48004C" DisplayName="Sequence-48004C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Reading 48004C ARS Input File&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_48004CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_48004CDataTable.AsEnumerable().Select(Function(r) r(5).ToString.Trim.Split("-"c)(0)+r(5).ToString.Trim.Split("-"c)(1)+r(6).ToString.Trim+r(7).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 48004:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="61910C" DisplayName="Sequence-61910C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Reading 61910C ARS Report&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_61910CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_61910CDataTable.AsEnumerable().Select(Function(r) r(4).ToString.Trim.Split("-"c)(0)+r(4).ToString.Trim.Split("-"c)(1) _
++r(4).ToString.Trim.Split("-"c)(3)+r(5).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 61910:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="48470C" DisplayName="Sequence-48470C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Read ARS Report 48470C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_48470CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_48470CDataTable.AsEnumerable().Select(Function(r) r(5).ToString.Trim.Split("-"c)(0)+r(5).ToString.Trim.Split("-"c)(1)+ _
+r(6).ToString.Trim+r(7).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 48470:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="48456C" DisplayName="Sequence-48456C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Read ARS Report 48456C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_48456CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_48456CDataTable.AsEnumerable().Select(Function(r) r(5).ToString.Trim.Split("-"c)(0)+r(5).ToString.Trim.Split("-"c)(1) _
++r(6).ToString.Trim+r(7).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 48456:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60132C" DisplayName="Sequence-60132C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Reading ARS Report 60132C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60132CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60132CDataTable.AsEnumerable().Select(Function(r) r(5).ToString.Trim.Split("-"c)(1)+r(5).ToString.Trim.Split("-"c)(2)+r(6).ToString.Trim+r(7).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Match SKu Exception for 60132 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60102C" DisplayName="Sequence-60102C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_17">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Reading ARS Report 60102C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60102CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_11">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60102CDataTable.AsEnumerable().Select(Function(r) r(4).ToString.Trim.Split("-"c)(0)+r(4).ToString.Trim.Split("-"c)(1) _
++r(5).ToString.Trim+r(6).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 60102:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60103C" DisplayName="Sequence-60103C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Reading ARSReport 60103C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60103CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_12">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60103CDataTable.AsEnumerable().Select(Function(r) r(3).ToString.Trim.Split("-"c)(0)+r(3).ToString.Trim.Split("-"c)(1)+r(4).ToString.Trim+r(5).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 60103:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60104C" DisplayName="Sequence-60104C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Reading ARS Report 60104C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60104CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60104CDataTable.AsEnumerable().Select(Function(r) r(6).ToString.Trim.Split("-"c)(0)+r(6).ToString.Trim.Split("-"c)(1)+r(7).ToString.Trim+r(8).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Exception Report SKU Match for 60104 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60340C" DisplayName="Sequence- 60340C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Reading ARS Report 60340C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60340CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60340CDataTable.AsEnumerable().Select(Function(r) r(6).ToString.Trim+r(7).ToString.Trim+r(9).ToString.Trim+r(10).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;Exception Report SKU Match for 60340 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60341C" DisplayName="Sequence-60341C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_13">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Reading ARS Report 60341C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60341CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60341CDataTable.AsEnumerable().Select(Function(r) r(4).ToString.Trim+r(5).ToString.Trim+r(7).ToString.Trim+r(8).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Exception Report SKU Match for 60341 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="60339C" DisplayName="Sequence-60339C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Reading ARS Report 60339C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_60339CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_60339CDataTable.AsEnumerable().Select(Function(r) r(4).ToString.Trim+r(5).ToString.Trim _
++r(8).ToString.Trim+r(9).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 60339:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="61304C" DisplayName="Sequence-61304C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Reading ARS Report 61304C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_61304CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_14">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_61304CDataTable.AsEnumerable().Select(Function(r) r(4).ToString.Trim+r(5).ToString.Trim+r(8).ToString.Trim+ _
+r(9).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 61304:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="61318C" DisplayName="Sequence- 61318C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Reading ARS 61318C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_61318CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_15">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_61318CDataTable.AsEnumerable().Select(Function(r) r(6).ToString.Trim+r(7).ToString.Trim+ _
+r(9).ToString.Trim+r(10).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 61318:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="61305C" DisplayName="Sequence-61305C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Reading ARS Report 61305C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_61305CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_16">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_61305CDataTable.AsEnumerable().Select(Function(r) r(6).ToString.Trim+r(7).ToString.Trim+r(9).ToString.Trim+ _
+r(10).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 61305:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="46465C" DisplayName="Sequence-46465C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Reading ARS Report 46465C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_46465CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_46465CDataTable.AsEnumerable().Select(Function(r) r(5).ToString.Trim+r(6).ToString.Trim+r(8).ToString.Trim+r(9).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Exception Report SKU Match for 46465 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="48423C" DisplayName="Sequence-48423C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Reading ARS Report 48423C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_48423CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_48423CDataTable.AsEnumerable().Select(Function(r) r(3).ToString.Trim.Split("-"c)(0)+r(3).ToString.Trim.Split("-"c)(1)+r(3).ToString.Trim.Split("-"c)(4)+r(4).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Exception Report SKU Match for 48423 &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+          <Sequence x:Key="61311C" DisplayName="Sequence-61311C" sap:VirtualizedContainerService.HintSize="336,577" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Reading ARS Report 61311C&quot;]" />
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadInputARS workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Files\ReadInputARS.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ARSFolderPath">[in_folderPathARS]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_OutputDataTable">[io_61311CDataTable]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <Assign sap:VirtualizedContainerService.HintSize="314,64" sap2010:WorkflowViewState.IdRef="Assign_17">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_MatchedSKUExceptionDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[in_ExceptionTransationDT.AsEnumerable().Where(Function(row) _
+io_61311CDataTable.AsEnumerable().Select(Function(r) r(11).ToString.Trim+r(12).ToString.Trim+ _
+r(14).ToString.Trim+r(15).ToString.Trim.Replace("-","")).Any(Function(x) _
+x=(row(2).ToString.Trim+row(3).ToString.Trim+row(10).ToString.Trim+row(16).ToString.Trim.Replace("-","")))).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Matched SKU Count for Exception Report 61311:- &quot;+io_MatchedSKUExceptionDT.Rows.Count.ToString]" />
+          </Sequence>
+        </Switch>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="480,160" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;No SKU &amp; Quantity Match From Exception Report &amp; ARS Report- &quot;+in_FileNameARSReport.ToString]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
